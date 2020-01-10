@@ -8,7 +8,18 @@ public class HelloController {
 
     @RequestMapping("/")
     public String index() {
-        return "Greetings from Spring Boot!";
+        return "Java is fucking hard!";
     }
-
+    @RequestMapping("/test")
+    public String test() {
+        return "<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "  <head>\n" +
+                "    <title>Just a title</title>\n" +
+                "  </head>\n" +
+                "  <body>\n" +
+                "    <p>This is just a text!</p>\n" +
+                "  </body>\n" +
+                "</html>";
+    }
 }
