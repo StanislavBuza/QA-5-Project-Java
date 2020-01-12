@@ -1,25 +1,35 @@
 package hello;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {
 
+
     @RequestMapping("/")
-    public String index() {
-        return "Java is fucking hard!";
-    }
-    @RequestMapping("/test")
     public String test() {
-        return "<!DOCTYPE html>\n" +
+        return  "<!DOCTYPE html>\n" +
                 "<html>\n" +
-                "  <head>\n" +
-                "    <title>Just a title</title>\n" +
-                "  </head>\n" +
-                "  <body>\n" +
-                "    <p>This is just a text!</p>\n" +
-                "  </body>\n" +
-                "</html>";
+                "<body>\n" +
+                "<form action=\"/login\" >" +
+                "Login:<br/>" +
+                " <input type=\"text\" name=\"login\"><br>" +
+                "<br/>Password: <br/>" +
+                "<input type=\"password\" name=\"password\"><br>" +
+                "<br/>Gender<br/>" +
+                "<input type=\"radio\" name=\"gender\" value=\"male\" checked> Male<br>\n" +
+               " <input type=\"radio\" name=\"gender\" value=\"female\"> Female<br>\n" +
+                "<input type=\"radio\" name=\"gender\" value=\"other\"> Other<br>\n" +
+                "<input type=\"submit\" value=\"Submit\">"+
+                "</form>" +
+                "</body>\n" +
+                "</html>\n";
+    }
+    @GetMapping("/login")
+    @ResponseBody
+    public String login(@RequestParam String login,@RequestParam String password) {
+        System.out.println("Login :" + login);
+        System.out.println("Password :" + password);
+        return "Login: " + login + "       "  + "Password: " + password ;
     }
 }
